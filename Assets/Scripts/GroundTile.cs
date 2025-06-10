@@ -15,7 +15,7 @@ public class GroundTile : MonoBehaviour
 
     private void Awake()
     {
-        groundspawner = GameObject.FindObjectOfType<GroundSpawner>();
+        groundspawner = GameObject.FindAnyObjectByType<GroundSpawner>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -45,17 +45,21 @@ public class GroundTile : MonoBehaviour
     public void SpawnObs()
     {
         int SpawnPrefab = Random.Range(0, obstaclePrefabs.Length);
+
         if (SpawnPrefab == 2)
         {
-            Instantiate(obstaclePrefabs[SpawnPrefab], spawnpoints[0].transform.position, Quaternion.Euler(0, 90, 0), transform);
+            vectObs = spawnpoints[0].transform.position;
         }
         else
         {
             int ChooseSpawnPoint = Random.Range(0, spawnpoints.Length);
             vectObs = spawnpoints[ChooseSpawnPoint].transform.position;
-            Instantiate(obstaclePrefabs[SpawnPrefab], vectObs, Quaternion.Euler(0, 90, 0), transform);
         }
+
+        GameObject obs = Instantiate(obstaclePrefabs[SpawnPrefab], vectObs, Quaternion.Euler(0, 90, 0), transform);
+        obs.transform.SetParent(transform);
     }
+    
 
     public void SpawnCoin()
     {
