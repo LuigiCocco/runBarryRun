@@ -28,10 +28,12 @@ public class GroundTile : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.CompareTag("Player"))
+        {
+            groundspawner.spawnTile();
 
-        groundspawner.spawnTile();
-
-        Destroy(gameObject, 5f);
+            Destroy(gameObject, 5f);
+        }
     }
 
     // Update is called once per frame

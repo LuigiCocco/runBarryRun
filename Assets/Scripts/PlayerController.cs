@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public float tempoRicarica = 2f;
     public float timerRicarica = 0f;
     public GameObject sphere;
+    public float moveSpeed = 5f;
+    public float currentMoveSpeed = 0f;
 
     [SerializeField] private float JumpForce = 10;
     [SerializeField] private LayerMask GroundMask;
@@ -48,8 +50,13 @@ public class PlayerController : MonoBehaviour
             */
             Vector3 forwardMovement = transform.forward * RunSpeed * Time.fixedDeltaTime;
             Vector3 newposition = new Vector3(position*3, transform.position.y, transform.position.z);
-            rb.MovePosition(newposition + forwardMovement );
+            float time = Time.fixedDeltaTime;
+            Vector3 smoothPosition = Vector3.Lerp(rb.position, newposition, moveSpeed * time);
+            
+            Vector3 totalMovement = (smoothPosition + forwardMovement) - rb.position;
+            currentMoveSpeed = totalMovement.x / Time.fixedDeltaTime;
 
+            rb.MovePosition(smoothPosition + forwardMovement);
         }
 
 
@@ -118,7 +125,7 @@ public class PlayerController : MonoBehaviour
                 proiettili = 3;
             }
         }
-        
+
 
 
     }
