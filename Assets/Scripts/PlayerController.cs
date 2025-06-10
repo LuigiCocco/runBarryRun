@@ -50,11 +50,10 @@ public class PlayerController : MonoBehaviour
             */
             Vector3 forwardMovement = transform.forward * RunSpeed * Time.fixedDeltaTime;
             Vector3 newposition = new Vector3(position*3, transform.position.y, transform.position.z);
-            float time = Time.fixedDeltaTime;
-            Vector3 smoothPosition = Vector3.Lerp(rb.position, newposition, moveSpeed * time);
+            Vector3 smoothPosition = Vector3.Lerp(rb.position, newposition, moveSpeed * Time.fixedDeltaTime);
             
-            Vector3 totalMovement = (smoothPosition + forwardMovement) - rb.position;
-            currentMoveSpeed = totalMovement.x / Time.fixedDeltaTime;
+            float xMovement = smoothPosition.x - rb.position.x;
+            currentMoveSpeed = xMovement / Time.fixedDeltaTime;
 
             rb.MovePosition(smoothPosition + forwardMovement);
         }
