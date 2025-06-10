@@ -25,7 +25,7 @@ public class CameraFollow : MonoBehaviour
         Vector3 targetpos = player.position + offset;
         
         // Fissa la telecamera solo sull'asse Y (così la telecamera non si sposterà orizzontalmente)
-        targetpos.x = 0;
+        //targetpos.x = 0;
         
         // Muovi la telecamera verso la posizione calcolata
         transform.position = targetpos;
