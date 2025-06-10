@@ -44,10 +44,17 @@ public class GroundTile : MonoBehaviour
 
     public void SpawnObs()
     {
-        int ChooseSpawnPoint = Random.Range(0, spawnpoints.Length); 
         int SpawnPrefab = Random.Range(0, obstaclePrefabs.Length);
-        vectObs = spawnpoints[ChooseSpawnPoint].transform.position;
-        Instantiate(obstaclePrefabs[SpawnPrefab], vectObs, Quaternion.Euler(0, 90, 0), transform);
+        if (SpawnPrefab == 2)
+        {
+            Instantiate(obstaclePrefabs[SpawnPrefab], spawnpoints[0].transform.position, Quaternion.Euler(0, 90, 0), transform);
+        }
+        else
+        {
+            int ChooseSpawnPoint = Random.Range(0, spawnpoints.Length);
+            vectObs = spawnpoints[ChooseSpawnPoint].transform.position;
+            Instantiate(obstaclePrefabs[SpawnPrefab], vectObs, Quaternion.Euler(0, 90, 0), transform);
+        }
     }
 
     public void SpawnCoin()

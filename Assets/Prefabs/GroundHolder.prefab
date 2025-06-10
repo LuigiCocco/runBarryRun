@@ -247,10 +247,12 @@ MonoBehaviour:
   obstaclePrefabs:
   - {fileID: 3123709992703316545, guid: b360653ee1a8e45c79f8629613f3b0a3, type: 3}
   - {fileID: 3894146549883327487, guid: 1a187ae6fb3244f8c93b69f68345a1f8, type: 3}
+  - {fileID: 9184799658607813419, guid: 4ddde72b89e9a1e42b5de002b4331b62, type: 3}
   spawnpoints:
   - {fileID: 4973173795204008225}
   - {fileID: 5077236677331399405}
   - {fileID: 3435297326883480102}
+  vectObs: {x: 0, y: 0, z: 0}
 --- !u!1 &3387020359641964448
 GameObject:
   m_ObjectHideFlags: 0
