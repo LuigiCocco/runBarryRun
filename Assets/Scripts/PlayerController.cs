@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
                 proiettili = 3;
             }
         }
-
+        
 
 
     }
