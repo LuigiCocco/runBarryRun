@@ -28,14 +28,22 @@ public class CameraFollow : MonoBehaviour
         Vector3 targetpos;
         // Calcola la posizione desiderata della telecamera
         if (!firstPerson)
+        {
             targetpos = player.position + offset;
+            transform.position = targetpos;
+            transform.rotation = Quaternion.Euler(30, 0, 0);
+        }
         else
-            targetpos = player.position + new Vector3(0,1.8f,0);
-        
+        {
+            targetpos = player.position + new Vector3(0, 1.8f, 0);
+            transform.position = targetpos;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            
+        }
         // Fissa la telecamera solo sull'asse Y (così la telecamera non si sposterà orizzontalmente)
             //targetpos.x = 0;
 
             // Muovi la telecamera verso la posizione calcolata
-            transform.position = targetpos;
+            
     }
 }
